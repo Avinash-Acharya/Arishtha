@@ -1,12 +1,12 @@
 import os
 import json
 import torch
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import google.generativeai as genai
 from google.ai.generativelanguage_v1beta.types import content
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-load_dotenv()
+# load_dotenv()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # location = "../finetuned_text_model"
 location = "facebook/roberta-hate-speech-dynabench-r4-target"

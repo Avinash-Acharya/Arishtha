@@ -1,5 +1,5 @@
 # Project Name
-This project is ________. (Describe the main goals of the project. Limit to 1-2 sentences)
+This project is Arishta. (Describe the main goals of the project. Limit to 1-2 sentences)
 
 ## Description
 Optional section to provide a more detailed overview of the project.

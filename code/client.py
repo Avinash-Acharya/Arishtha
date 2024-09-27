@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 from scrape import scrape_content
 from queuing import process_text_content, process_image_content
@@ -43,4 +44,5 @@ with gr.Blocks() as demo:
     html_output = gr.HTML(label="Modified Webpage")
     submit_btn.click(process_content, inputs=url_input, outputs=[status_output, html_output])
 
-demo.launch(debug=True)
+proxy_prefix = os.environ.get("PROXY_PREFIX")
+demo.launch(debug=True, server_name="0.0.0.0", server_port=8080, root_path=proxy_prefix)
