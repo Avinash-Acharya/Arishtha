@@ -35,7 +35,7 @@ def download_audio(url, output_file, max_duration=60):
         download_audio("https://www.youtube.com/watch?v=example", "output.mp3", max_duration=30)
     """
 
-    print("- Downloading audio...")
+    # subprocess.run(["echo", "- Downloading audio..."])
     result = subprocess.run(
         ["yt-dlp", "--skip-download", "--print-json", url],
         stdout=subprocess.PIPE, text=True
@@ -62,7 +62,7 @@ def transcribe_audio(audio_file):
         str: The transcribed text from the audio file.
     """
 
-    print("- Transcribing audio...")
+    # subprocess.run(["echo", "- Transcribing audio..."])
     audio_data, _ = librosa.load(audio_file, sr=16000)
     inputs = processor(audio_data, sampling_rate=16000, return_tensors="pt", padding=True)
     with torch.no_grad():
@@ -85,7 +85,7 @@ def summarize_text(text):
         The summary length is controlled by the max_length and min_length parameters.
     """
     
-    print("- Summarizing text...")
+    # subprocess.run(["echo", "- Summarizing text..."])
     input_ids = Stokenizer(text, return_tensors="pt")
     outputs = Smodel.generate(**input_ids, max_length=100, min_length=40)
     summarized = Stokenizer.decode(outputs[0], skip_special_tokens=True)
@@ -112,7 +112,7 @@ def fake_video_news(url):
         print(result)
     """
 
-    print("- Processing video...")
+    # subprocess.run(["echo", "- Processing video..."])
     start_time = time.time()
     output_file = "./audio.mp3"
     delete_after_process = True 

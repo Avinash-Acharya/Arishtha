@@ -2,6 +2,7 @@ import re
 import json
 import queue
 import threading
+# import subprocess
 from video_model import fake_video_news
 from image_model import detect_nsfw_image
 from text_model import detect_hate_speech
@@ -67,7 +68,7 @@ def process_text_content(text):
         str: The processed text content.
     """
 
-    print("- Detecting hate speech...")
+    # subprocess.run(["echo", "- Detecting hate speech..."])
     # print("BEFORE", text)
     splits = re.split(r'([.!?;:])', text)
     agent.processed_text.clear()
