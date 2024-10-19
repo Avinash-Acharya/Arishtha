@@ -2,12 +2,16 @@
 
 A 'Content Moderation Tool' utilizing Multimodal Agentic approach which can be embedded within an Browser.
 
+> Note: further updates are done in this [repo](https://github.com/Avinash-Acharya/Content_Moderation)
+
 ![App Screenshot](/media/nvidiaArchi2.png)
+
 _Figure 1: Process-Flow/Architecture Diagram_
 
 ## Demo
 
 ![Admin Page](./media/demo.gif)
+
 _Figure 2: Admin Page_
 
 ## Getting Started
@@ -31,6 +35,7 @@ Open the newly installed NVIDIA AI Workbench from your system and follow the bel
 ### 1. Choose Docker as your container Runtime :
 
 ![App Screenshot](/media/dockr.png)
+
 _Figure 3: Runtime Selection Process_
 
 ### 2. Choose a Location and clone this Repository :
@@ -40,19 +45,23 @@ https://github.com/Avinash-Acharya/Arishtha.git
 ```
 
 ![App Screenshot](/media/clone.png)
+
 _Figure 4: Cloning This Repository_
 
 ### 3. Navigate to the `Environment` menu towards the left side panel and search for the `Secrets` and add the `GEMINI_API_KEY` :
 
 ![App Screenshot](/media/key.png)
+
 _Figure 5: Adding Secret Environment Variable_
 
 ### 4. Start the Build process by clicking on `Start Build` button :
 
 ![App Screenshot](/media/build_needed.png)
+
 _Figure 6: Image during PreBuild_
 
 ![App Screenshot](/media/complete_build.png)
+
 _Figure 7: Image during PostBuild_
 
 ### 5. Navigate to the `Application` section under `Environment` and Run the Gradio Application :
@@ -60,14 +69,17 @@ _Figure 7: Image during PostBuild_
 Port :`http://localhost:10000/projects/Arishtha/applications/Gradio/`
 
 ![App Screenshot](/media/application.png)
+
 _Figure 8: Running Gradio Application_
 
 ## Screenshots
 
 ![App Screenshot](/media/before_process.png)
+
 _Figure 9: Gradio Application on browser With no URL as Input_
 
 ![App Screenshot](/media/after_process.png)
+
 _Figure 10: Post Processing on the Example URL_
 
 URL: `https://nsfw-eg.vercel.app/` [⚠️Harsh Words WARNING!!⚠️]
