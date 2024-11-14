@@ -6,7 +6,7 @@ from io import BytesIO
 from transformers import AutoModelForImageClassification, ViTImageProcessor
 
 
-local_image_path = './media/car.png'
+local_image_path = '/project/media/car.png'
 
 with open(local_image_path, 'rb') as image_file:
     car_image_data = base64.b64encode(image_file.read()).decode('utf-8')

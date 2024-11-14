@@ -109,7 +109,7 @@ execution:
     stop_command: pkill -f '^python3 client.py'
     user_msg: ""
     logfile_path: ""
-    timeout_seconds: 60
+    timeout_seconds: 200
     icon_url: ""
     webapp_options:
       autolaunch: true
