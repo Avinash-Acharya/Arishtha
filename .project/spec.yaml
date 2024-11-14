@@ -124,6 +124,10 @@ execution:
   secrets:
   - variable: GEMINI_API_KEY
     description: ""
+  - variable: ELEVENLABS_API_KEY
+    description: ""
+  - variable: NVIDIA_API_KEY
+    description: ""
   mounts:
   - type: project
     target: /project/
