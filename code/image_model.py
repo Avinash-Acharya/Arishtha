@@ -13,7 +13,7 @@ with open(local_image_path, 'rb') as image_file:
 
 car_image_base64 = f"data:image/png;base64,{car_image_data}"
 
-MODEL = "models/nsfw_image_detection"
+MODEL = "/tmp/models/nsfw_image_detection"
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = AutoModelForImageClassification.from_pretrained(MODEL)

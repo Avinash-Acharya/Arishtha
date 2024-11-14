@@ -2,7 +2,7 @@ import time
 import torch
 from transformers import AutoTokenizer, BartForConditionalGeneration
 
-fb = "models/bart_cnn_text_summarization"
+fb = "/tmp/models/bart_cnn_text_summarization"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = BartForConditionalGeneration.from_pretrained(fb)
 tokenizer = AutoTokenizer.from_pretrained(fb)

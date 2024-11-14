@@ -13,8 +13,8 @@ python3 -c "
 import os
 from transformers import AutoModelForImageClassification, ViTImageProcessor
 MODEL = 'Falconsai/nsfw_image_detection'
-save_directory = 'code/models/nsfw_image_detection'
-if not os.path.exists('/project/code/models/nsfw_image_detection'):
+save_directory = '/tmp/models/nsfw_image_detection'
+if not os.path.exists('/tmp/models/nsfw_image_detection'):
     model = AutoModelForImageClassification.from_pretrained(MODEL)
     processor = ViTImageProcessor.from_pretrained(MODEL)
     model.save_pretrained(save_directory)
@@ -27,8 +27,8 @@ python3 -c "
 import os
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 location = 'facebook/roberta-hate-speech-dynabench-r4-target'
-save_directory = 'code/models/roberta_hate_speech'
-if not os.path.exists('/project/code/models/roberta_hate_speech'):
+save_directory = '/tmp/models/roberta_hate_speech'
+if not os.path.exists('/tmp/models/roberta_hate_speech'):
     HFtokenizer = AutoTokenizer.from_pretrained(location)
     HFmodel = AutoModelForSequenceClassification.from_pretrained(location)
     HFmodel.save_pretrained(save_directory)
@@ -41,8 +41,8 @@ python3 -c "
 import os
 from transformers import AutoTokenizer, BartForConditionalGeneration
 fb = 'sshleifer/distilbart-cnn-12-6'
-save_directory = 'code/models/bart_cnn_text_summarization'
-if not os.path.exists('/project/code/models/bart_cnn_text_summarization'):
+save_directory = '/tmp/models/bart_cnn_text_summarization'
+if not os.path.exists('/tmp/models/bart_cnn_text_summarization'):
     try:
         model = BartForConditionalGeneration.from_pretrained(fb)
         tokenizer = AutoTokenizer.from_pretrained(fb)
@@ -58,8 +58,8 @@ python3 -c "
 import os
 from transformers import Wav2Vec2Processor, Wav2Vec2ForCTC
 S2T_MODEL_ID = 'jonatasgrosman/wav2vec2-large-xlsr-53-english'
-save_directory = 'code/models/wav2vec2_speech_to_text'
-if not os.path.exists('/project/code/models/wav2vec2_speech_to_text'):
+save_directory = '/tmp/models/wav2vec2_speech_to_text'
+if not os.path.exists('/tmp/models/wav2vec2_speech_to_text'):
     processor = Wav2Vec2Processor.from_pretrained(S2T_MODEL_ID)
     model = Wav2Vec2ForCTC.from_pretrained(S2T_MODEL_ID)
     model.save_pretrained(save_directory)
