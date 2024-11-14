@@ -1,5 +1,4 @@
 import os
-# import subprocess
 from dotenv import load_dotenv
 import google.generativeai as genai
 from google.ai.generativelanguage_v1beta.types import content
@@ -28,6 +27,7 @@ generation_config1 = {
   ),
   "response_mime_type": "application/json",
 }
+
 model1 = genai.GenerativeModel(
   model_name="gemini-1.5-flash",
   generation_config=generation_config1,
@@ -65,37 +65,20 @@ model2 = genai.GenerativeModel(
   generation_config=generation_config2,
   system_instruction="tell if the given URL is an article (blog , news) or non article web page. And if it is an article, then tell if its fake , real or opinionated.",
 )
-
 chat_session2 = model2.start_chat()
 
 def fake_news_detector(text):
-    """
-    Detects if the given news article text is fake or real.
-    This function sends the provided text to a chat session for analysis
-    and returns the result indicating whether the news article is fake or real.
-    Args:
-      text (str): The news article text to be analyzed.
-    Returns:
-      str: The result from the chat session indicating if the news is fake or real in JSON.
-    """
-    
-    # subprocess.run(["echo", "- Detecting if the news article is fake or real..."])
+ 
+    print("- Detecting if the news article is fake or real...")
     response = chat_session2.send_message(text)
     result = response.text
+
     return result
 
 def fake_video_detector(text):
-    """
-    Detects if the video described by the given text is fake or real.
-    This function sends the provided text to a chat session for analysis and 
-    returns the result indicating whether the video is fake or real.
-    Args:
-      text (str): The transcription of the video to be analyzed.
-    Returns:
-      str: The result from the chat session indicating if the video is fake or real in JSON.
-    """
-    
-    # subprocess.run(["echo", "- Detecting if the video is fake or real..."])
+
+    print("- Detecting if the video is fake or real...")
     response = chat_session1.send_message(text)
     result = response.text
+    
     return result

@@ -1,19 +1,20 @@
 import os
 import json
 import torch
-# import subprocess
 from dotenv import load_dotenv
 import google.generativeai as genai
+from nvidiaNim import model_1_1, model_1_2
 from google.ai.generativelanguage_v1beta.types import content
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 load_dotenv()
+# location = "facebook/roberta-hate-speech-dynabench-r4-target"
+location = "models/roberta_hate_speech"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# location = "../finetuned_text_model"
-location = "facebook/roberta-hate-speech-dynabench-r4-target"
 HFtokenizer = AutoTokenizer.from_pretrained(location)
 HFmodel = AutoModelForSequenceClassification.from_pretrained(location)
 HFmodel.to(device)
+
 # Config for gemini model
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 generation_config = {
@@ -40,25 +41,21 @@ model = genai.GenerativeModel(
 )
 chat_session = model.start_chat()
 
-def detect_hate_speech(text):
-  """
-  Detects and replaces hate speech in the given text.
-  This function uses a pre-trained Hugging Face model to detect hate speech in the input text.
-  If hate speech is detected, it replaces the hate speech with a sanitized version using the 
-  `hate_speech_replacer` function. If no hate speech is detected, it returns the original text.
-  Args:
-    text (str): The input text to be analyzed for hate speech.
-  Returns:
-    str: The sanitized text if hate speech is detected, otherwise the original text.
-  """
-  
+def detect_hate_speech(text, modelNo):
+
+  global modeln
+  modeln = modelNo
+
   if not text:
       return text
   inputs = HFtokenizer(text, return_tensors="pt")
+
   with torch.no_grad():
       logits = HFmodel(**inputs.to(device)).logits
+
   predicted_class_id = logits.argmax().item()
   predicted_label = HFmodel.config.id2label[predicted_class_id]
+
   if predicted_label == "nothate":
       return text
   elif predicted_label == "hate":
@@ -66,18 +63,19 @@ def detect_hate_speech(text):
       return replaced_text
 
 def hate_speech_replacer(text):
-  """
-  Replaces hate speech in the given text with positive language.
-  This function sends the input text to a chat session for processing. 
-  The chat session returns a response which is then parsed to extract 
-  the positive language replacement for any detected hate speech.
-  Args:
-    text (str): The input text that may contain hate speech.
-  Returns:
-    str: The text with hate speech replaced by positive alternative language.
-  """
 
-  # subprocess.run(["echo", "- Replacing hate speech..."])
-  response = chat_session.send_message(text)
-  response_json = json.loads(response.text)
-  return response_json['positive']
+  print("- Replacing hate speech...") 
+  
+  if modeln == 1:
+    print("model 1")
+    response = chat_session.send_message(text)
+    response_json = json.loads(response.text)
+    return response_json['positive'] + "c#@ng3d"
+  elif modeln == 2:
+    print("model 2")
+    response = model_1_1(text)
+    return response + "c#@ng3d"
+  elif modeln == 3:
+    print("model 3")
+    response = model_1_2(text)
+    return response + "c#@ng3d"
