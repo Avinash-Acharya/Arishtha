@@ -1,0 +1,1 @@
+{"schema":"v1","records":[{"type":"PROJECT","operation":"CREATED","data":[{"data":"Created secret 'ELEVENLABS_API_KEY'","mime":"text/plain"}],"important":null},{"type":"PROJECT","operation":"CREATED","data":[{"data":"Created secret 'NVIDIA_API_KEY'","mime":"text/plain"}],"important":null}]}
