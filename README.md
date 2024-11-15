@@ -1,6 +1,6 @@
 # Arishtha
 
-A 'Content Moderation Tool' utilizing Multimodal Agentic approach which can be embedded within an Browser.
+A 'Content Moderation Tool' utilizing Multimodal Agentic approach which can be embedded within an Browser. Arishtha is designed as a kid-friendly browser, offering a safe browsing experience that appeals to anyone who values online safety. In essence, it addresses a problem that should have been resolved by now.
 
 ## Demo
 
@@ -12,7 +12,34 @@ _Figure 1: Demo_
 
 _Figure 2: Process-Flow/Architecture Diagram_
 
+## About Arishtha
+
+### Functionalities:
+
+Arishta packs a remarkable range of features into its simple design, including:
+
+- **Inappropriate Content Replacement**: Automatically substitutes inappropriate words or hate speech with positive alternatives, with the option to highlight changes via a toggle button.  
+- **Custom NSFW Image Replacement**: Replaces NSFW images with user-selected custom images.  
+- **Audio Summaries**: Converts webpage content into audio summaries, enabling a podcast-like experience on the go.  
+- **Article Credibility Analysis**: Assesses the reliability of articles, including embedded videos.  
+- **Dark/Light Mode Toggle**: Offers a built-in dark and light mode toggle that applies to web content as well.  
+- **NVIDIA NIM Model Integration**: Allows users to switch between various NVIDIA NIM models seamlessly.  
+
 ## Getting Started
+
+### System Requiremnets: 
+
+- **Operating System**:  
+  - Windows 11 (version 21H2, build 22000 or higher)  
+  - Windows 10 (version 21H2, build 19044 or higher)  
+
+- **Disk Space**:  
+  - 1 GB for AI Workbench application  
+  - 30-40 GB for containers  
+
+- **Memory**:  
+  - 16 GB RAM (preferred)  
+  - 8 GB RAM (minimum)  
 
 ### Prerequisites:
 
@@ -20,9 +47,9 @@ _Figure 2: Process-Flow/Architecture Diagram_
 - [Docker](https://www.docker.com/products/container-runtime/).
 - WSL2 ( This will be Installed with the Workbench, if not Installed in prior )
 
-### Environment Variables:
+### Secrets:
 
-To run this project, you will be needing the following environment variable. Where to add one will be discussed later.
+To run this project, you will be needing the following key and value pairs. Where to add one will be discussed later.
 
 `GEMINI_API_KEY` - This can be accessed from [Google AI Studio](https://aistudio.google.com/app/prompts/new_chat/?utm_source=hackathon&utm_medium=referral&utm_campaign=Devfolio&utm_content=)
 
@@ -30,7 +57,7 @@ To run this project, you will be needing the following environment variable. Whe
 
 `ELEVENLABS_API_KEY` - This can be accessed from [ElevenLabs](https://elevenlabs.io/app/speech-synthesis/text-to-speech)
 
-> Adding all the key are not necessary if you are not using those functionalities. But make sure to add random values and save it, or the **program will not run**.
+> Adding all the values are not necessary if you are not using those functionalities. But make sure to add random values and save it, or the **program will not run**.
 
 
 ## Run Locally
@@ -57,13 +84,13 @@ https://github.com/Avinash-Acharya/Arishtha.git
 
 _Figure 4: Cloning This Repository_
 
-### 3. Enter the Environment Variables:
+### 3. Enter the Secrets:
 
 Navigate to the `Environment` menu towards the left side panel and search for the `Secrets` where you need to enter the API Keys. 
 
 ![App Screenshot](/media/key.png)
 
-_Figure 5: Adding Secret Environment Variable_
+_Figure 5: Adding Secrets_
 
 ### 4. Start the Build:
 
@@ -71,17 +98,17 @@ Start the Build process by clicking on `Start Build` button
 
 ![App Screenshot](/media/build_needed.png)
 
-_Figure 6: Image during PreBuild_
+_Figure 6: Image before PreBuild_
 
 ![App Screenshot](/media/complete_build.png)
 
-_Figure 7: Image during PostBuild_
+_Figure 7: Image after PostBuild_
 
 ### 5. Run the Application :
 
-Navigate to the `Application` section under `Environment` and Run the Gradio Application.
+Navigate to the `Application` section under `Environment` and Run the Gradio Application by toggling the button.
 
-**Port:** `http://localhost:10000/projects/Arishtha/applications/Gradio/`
+> **Port:** `http://localhost:10000/projects/Arishtha/applications/Gradio/`
 
 ![App Screenshot](/media/application.png)
 
