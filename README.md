@@ -12,6 +12,12 @@ _Figure 1: Demo_
 
 _Figure 2: Process-Flow/Architecture Diagram_
 
+## Video 
+
+[![Arishta Browser v2.0 - NVIDIA AI Workbench](https://img.youtube.com/vi/7g8ghAZ0eKs/maxresdefault.jpg)](https://www.youtube.com/watch?v=7g8ghAZ0eKs)
+
+> _Click on the Image_
+
 ## About Arishtha
 
 ### Functionalities:
