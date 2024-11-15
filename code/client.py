@@ -8,7 +8,7 @@ from queuing import process_text_content, process_image_content, process_url_con
 aud = None
 soup = None
 
-def process_content(url, toggle_state1, toggle_state2, toggle_state3, highlight_changes, text_model, sum_model):
+def process_content(url, toggle_state1, toggle_state2, toggle_state3, highlight_changes, text_model, sum_model, image):
 
     print(f"Text Model is "+text_model)
     print(f"Summarization Model is "+sum_model)
@@ -44,6 +44,7 @@ def process_content(url, toggle_state1, toggle_state2, toggle_state3, highlight_
     for link in content.get('css_links', []):
         soup.head.append(link)  
 
+    # TODO: Modify, This Comment Has to stay. 
     # for i, text in enumerate(content.get('text', [])):
     #     original_text = text
     #     processed_text = process_text_content(text)
@@ -72,14 +73,10 @@ def process_content(url, toggle_state1, toggle_state2, toggle_state3, highlight_
         processed_text = process_text_content(text, text_model)
 
         if highlight_changes and "c#@ng3d" in processed_text:
-            print("Changes detected")
-            print(f"Original text: {original_text}")
-            print(f"Processed text: {processed_text}")
             processed_text = processed_text.replace("c#@ng3d", "")
             processed_text_html = f"<span class='highlight-old'>{original_text}</span><span class='highlight-new'>{processed_text}</span><br>"
             processed_text = BeautifulSoup(processed_text_html, "html.parser")
         else:
-            print("No changes detected")
             processed_text = processed_text.replace("c#@ng3d", "")
 
         for element in soup.find_all(['p', 'h1', 'h2', 'h3', 'span', 'a', 'li']):
@@ -90,7 +87,7 @@ def process_content(url, toggle_state1, toggle_state2, toggle_state3, highlight_
         yield f"Processing text...({i+1}/{len(content['text'])})", soup.prettify(formatter='html').encode('utf-8').decode('utf-8'), json_result, audio_summary
     
     for i, img_src in enumerate(content['images']):
-        processed_image = process_image_content(img_src) 
+        processed_image = process_image_content(img_src, image) 
         soup.find_all('img')[i]['src'] = processed_image
         yield f"Processing images... ({i+1}/{len(content['images'])})", soup.prettify(formatter='html').encode('utf-8').decode('utf-8'), json_result, audio_summary
 
@@ -122,7 +119,7 @@ js_dark="""
             document.body.classList.toggle('dark');
         }
         """
-
+# Pair of themes of my likings.
 # 'allenai/gradio-theme' 'YTheme/Minecraft'
 
 # gradio interface
@@ -162,8 +159,10 @@ with gr.Blocks(theme='allenai/gradio-theme') as demo:
                 sum_model = gr.Dropdown(["Facebook BART CNN", "ibm/granite-3.0-8b-instruct [NVIDIA NIM]", "google/gemma-2b [NVIDIA NIM]"], label="Summarization Model", info="Pick the Model")
             if text_model == "meta/llama-3.1-405b-instruct [NVIDIA NIM]" or text_model == "meta/llama-3.1-8b-instruct [NVIDIA NIM]" or sum_model == "ibm/granite-3.0-8b-instruct [NVIDIA NIM]" or sum_model == "google/gemma-2b [NVIDIA NIM]" and not os.getenv("NVIDIA_API_KEY", False):
                 gr.Alert("NVIDIA_API_KEY not set", color="red")
+    with gr.Tab("Upload"):
+            image_input = gr.Image(label="Upload your Image", format=[".jpg", ".png"])
 
-    submit_btn.click(process_content, inputs=[url_input, toggle_button1, toggle_button2, toggle_dark, highlight_changes, text_model, sum_model], outputs=[status_output, html_output, json_output, audio_output])    
+    submit_btn.click(process_content, inputs=[url_input, toggle_button1, toggle_button2, toggle_dark, highlight_changes, text_model, sum_model, image_input], outputs=[status_output, html_output, json_output, audio_output])    
 
 
 proxy_prefix = os.environ.get("PROXY_PREFIX")

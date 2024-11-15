@@ -9,9 +9,7 @@ from nvidiaNim import model_2_1, model_2_2
 from news_fakery import fake_video_detector
 from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor , AutoTokenizer, AutoModelForSeq2SeqLM
 
-# S2T_MODEL_ID = "jonatasgrosman/wav2vec2-large-xlsr-53-english"
 S2T_MODEL_ID = "/tmp/models/wav2vec2_speech_to_text"
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
 processor = Wav2Vec2Processor.from_pretrained(S2T_MODEL_ID)
 model = Wav2Vec2ForCTC.from_pretrained(S2T_MODEL_ID)

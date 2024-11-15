@@ -8,7 +8,6 @@ from google.ai.generativelanguage_v1beta.types import content
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 load_dotenv()
-# location = "facebook/roberta-hate-speech-dynabench-r4-target"
 location = "/tmp/models/roberta_hate_speech"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 HFtokenizer = AutoTokenizer.from_pretrained(location)

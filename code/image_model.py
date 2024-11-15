@@ -1,6 +1,7 @@
 import torch
 import base64
 import requests
+import numpy as np
 from PIL import Image
 from io import BytesIO
 from transformers import AutoModelForImageClassification, ViTImageProcessor
@@ -20,7 +21,7 @@ model = AutoModelForImageClassification.from_pretrained(MODEL)
 processor = ViTImageProcessor.from_pretrained(MODEL)
 model.to(device)
 
-def detect_nsfw_image(url):
+def detect_nsfw_image(url, image):
 
     print("- Detecting NSFW Image...")
     response = requests.get(url)
@@ -40,6 +41,14 @@ def detect_nsfw_image(url):
 
     if label == "nsfw":
         print("- Replaceing NSFW Image...")
+        if image is not None:
+            pil_image = Image.fromarray(image.astype(np.uint8))
+            buffered = BytesIO()
+            pil_image.save(buffered, format="PNG")
+            user_image_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+            user_image_base64 = f"data:image/png;base64,{user_image_base64}"
+            
+            return user_image_base64
         return car_image_base64
     elif label == "normal":
         return url

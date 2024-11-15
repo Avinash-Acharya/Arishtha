@@ -49,7 +49,7 @@ class Agent:
         while True:
             try:
                 img_url = self.image_queue.get(timeout=1)
-                self.processed_image = detect_nsfw_image(img_url)
+                self.processed_image = detect_nsfw_image(img_url, gImage)
                 self.image_queue.task_done()
             except queue.Empty:
                 continue
@@ -78,10 +78,13 @@ def process_text_content(text, text_model):
 
     return result if result else text
 
-def process_image_content(url):
+def process_image_content(url, image):
 
     if not isinstance(url, str) or not url.startswith(('http://', 'https://')):
         raise ValueError(f"Invalid URL: {url}")
+        
+    global gImage
+    gImage = image 
     
     agent.processed_image = None  
     agent.image_queue.put(url)
