@@ -19,7 +19,7 @@ genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 generation_config = {
   "temperature": 0,
   "top_p": 0.95,
-  "top_k": 64,
+  "top_k": 40,
   "max_output_tokens": 500,
   "response_schema": content.Schema(
     type = content.Type.OBJECT,
@@ -34,7 +34,7 @@ generation_config = {
   "response_mime_type": "application/json",
 }
 model = genai.GenerativeModel(
-  model_name="gemini-1.5-flash",
+  model_name="gemini-1.5-flash-8b",
   generation_config=generation_config,
   system_instruction="user will provide a inappropriate/hate-speech sentence and you need to convert it into the positive version, which is just one sentence long. Make sure the same pronoun is preserved.",
 )

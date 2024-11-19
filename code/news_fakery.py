@@ -10,7 +10,7 @@ genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 generation_config1 = {
   "temperature": 0,
   "top_p": 0.95,
-  "top_k": 64,
+  "top_k": 40,
   "max_output_tokens": 100,
   "response_schema": content.Schema(
     type = content.Type.OBJECT,
@@ -29,7 +29,7 @@ generation_config1 = {
 }
 
 model1 = genai.GenerativeModel(
-  model_name="gemini-1.5-flash",
+  model_name="gemini-1.5-flash-8b",
   generation_config=generation_config1,
   system_instruction="user will provide a summarised version of an news article. Tell if it's factual or fake, and if it's factual, then tell if it's opiniated or not.",
 )
@@ -39,7 +39,7 @@ chat_session1 = model1.start_chat()
 generation_config2 = {
   "temperature": 0,
   "top_p": 0.95,
-  "top_k": 64,
+  "top_k": 40,
   "max_output_tokens": 8192,
   "response_schema": content.Schema(
     type = content.Type.OBJECT,
@@ -61,7 +61,7 @@ generation_config2 = {
 }
 
 model2 = genai.GenerativeModel(
-  model_name="gemini-1.5-flash",
+  model_name="gemini-1.5-flash-8b",
   generation_config=generation_config2,
   system_instruction="tell if the given URL is an article (blog , news) or non article web page. And if it is an article, then tell if its fake , real or opinionated.",
 )
