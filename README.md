@@ -8,7 +8,7 @@ A 'Content Moderation Tool' utilizing Multimodal Agentic approach which can be e
 
 _Figure 1: Demo_
 
-![App Screenshot](/media/nvidiaArchi2.png)
+![App Screenshot](/media/nvidiaArchi.png)
 
 _Figure 2: Process-Flow/Architecture Diagram_
 
