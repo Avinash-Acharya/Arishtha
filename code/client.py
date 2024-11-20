@@ -146,8 +146,8 @@ with gr.Blocks(theme='allenai/gradio-theme') as demo:
         
         with gr.Row():
             status_output = gr.Label(label="Status")
-            json_output = gr.JSON(label="Article Credibility Analysis")
-            audio_output = gr.Audio(label="Audio Summary")
+            json_output = gr.JSON(label="Article Credibility Analysis", visible=False)
+            audio_output = gr.Audio(label="Audio Summary", visible=False)
         html_output = gr.HTML(label="Modified Webpage")
 
     with gr.Tab("Models"):
@@ -161,7 +161,19 @@ with gr.Blocks(theme='allenai/gradio-theme') as demo:
                 gr.Alert("NVIDIA_API_KEY not set", color="red")
     with gr.Tab("Upload"):
             image_input = gr.Image(label="Upload your Image", format=[".jpg", ".png"])
+        
+    toggle_button1.change(
+        fn=lambda x: gr.update(visible=x), 
+        inputs=[toggle_button1], 
+        outputs=[json_output]
+    )
 
+    toggle_button2.change(
+        fn=lambda x: gr.update(visible=x), 
+        inputs=[toggle_button2], 
+        outputs=[audio_output]
+    )
+    
     submit_btn.click(process_content, inputs=[url_input, toggle_button1, toggle_button2, toggle_dark, highlight_changes, text_model, sum_model, image_input], outputs=[status_output, html_output, json_output, audio_output])    
 
 
