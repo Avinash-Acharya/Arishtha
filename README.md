@@ -65,6 +65,23 @@ To run this project, you will be needing the following key and value pairs. Wher
 
 > Adding all the values are not necessary if you are not using those functionalities. But make sure to add random values and save it, or the **program will not run**.
 
+### Explanation of the Structure:
+
+ **`code/`**:  
+
+- **`audioSum.py`**: Loads the web content (text) using the provided URL, summarizes it, and sends it to ElevenLabs for text-to-speech conversion.  
+- **`client.py`**: Handles the Gradio interface and its functions.  
+- **`custom_css.py`**: Contains custom CSS for dark and light modes, along with additional design customizations.  
+- **`image_model.py`**: Uses the image model to identify NSFW images from the web and replaces them with a user-selected image, ensuring it's Base64 encoded.  
+- **`news_fakery.py`**: Utilizes Gemini to determine the credibility of the current web page.  
+- **`nvidiaNim.py`**: Configures the four NVIDIA NIM models.  
+- **`queuing.py`**: Manages the queuing of data or instructions for analysis, designed for high-load/volume scenarios.  
+- **`scrape.py`**: Scrapes the web content for analysis at the start of the process when the URL is entered.  
+- **`server.py`**: Handles API inferencing.  
+- **`summarizer.py`**: Contains the configuration for the summarization model.  
+- **`text_model.py`**: Identifies inappropriate text content and replaces it with positive alternatives.  
+- **`video_model.py`**: Analyzes the credibility of videos embedded in articles by downloading the audio, transcribing, summarizing, and sending it to the Gemini model.  
+- **`ytlink.py`**: Includes code to search for and download YouTube videos embedded in articles.  
 
 ## Run Locally
 
