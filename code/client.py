@@ -139,10 +139,10 @@ with gr.Blocks(theme='allenai/gradio-theme') as demo:
                 with gr.Row():
                     toggle_dark = gr.Checkbox(label="Toggle to Light Mode ", value=False)
                 with gr.Row():
+                    highlight_changes = gr.Checkbox(label="Highlight Changes", value=False)
+                with gr.Row():
                     toggle_button1 = gr.Checkbox(label="Toggle to Analyse the Credibility of the article", value=False)
                     toggle_button2 = gr.Checkbox(label="Toggle to Get an Audio Summary of this Page", value=False)
-                with gr.Row():
-                    highlight_changes = gr.Checkbox(label="Highlight Changes", value=False)
         
         with gr.Row():
             status_output = gr.Label(label="Status")
