@@ -1,3 +1,5 @@
+# _**[Having a Dependency issue, Do not fork]**_
+
 # Arishtha
 
 A 'Content Moderation Tool' utilizing Multimodal Agentic approach which can be embedded within an Browser. Arishtha is designed as a kid-friendly browser, offering a safe browsing experience that appeals to anyone who values online safety. In essence, it addresses a problem that should have been resolved by now.
