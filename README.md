@@ -29,7 +29,8 @@ Arishta packs a remarkable range of features into its simple design, including:
 - **Audio Summaries**: Converts webpage content into audio summaries, enabling a podcast-like experience on the go.  
 - **Article Credibility Analysis**: Assesses the reliability of articles, including embedded videos.  
 - **Dark/Light Mode Toggle**: Offers a built-in dark and light mode toggle that applies to web content as well.  
-- **NVIDIA NIM Model Integration**: Allows users to switch between various NVIDIA NIM models seamlessly.  
+- **NVIDIA NIM Model Integration**: Allows users to switch between various NVIDIA NIM models seamlessly.
+- **API Inferencing**: Enables users to access the browser's functionalities programmatically via APIs, allowing seamless integration into other applications or workflows.
 
 ## Getting Started
 
