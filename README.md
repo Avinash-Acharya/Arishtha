@@ -140,7 +140,7 @@ _Figure 8: Running Gradio Application_
 
 
 
->**URL:** `https://nsfw-eg.vercel.app/` ⚠️Harsh Words WARNING!!⚠️
+>**URL:** [`https://nsfw-eg.vercel.app/`](https://nsfw-eg.vercel.app/) ⚠️Harsh Words WARNING!!⚠️
 _(This Webpage was built for testing purpose only)_
 
 ## License
