@@ -55,7 +55,7 @@ class Agent:
                 continue
 
 
-def process_text_content(text, text_model):
+def process_text_content(text, text_model="default"):
 
     print("- Detecting hate speech...")
     global t_model
@@ -78,7 +78,7 @@ def process_text_content(text, text_model):
 
     return result if result else text
 
-def process_image_content(url, image):
+def process_image_content(url, image=None):
 
     if not isinstance(url, str) or not url.startswith(('http://', 'https://')):
         raise ValueError(f"Invalid URL: {url}")
@@ -92,7 +92,7 @@ def process_image_content(url, image):
 
     return agent.processed_image
 
-def process_url_content(url, sum_model):
+def process_url_content(url, sum_model="default"):
 
     article_response = fake_news_detector(url)
     article_response_json = json.loads(article_response)
